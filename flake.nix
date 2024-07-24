@@ -19,7 +19,7 @@
         hash = "sha256-c0F364rZpdPrwPNbsWDd3ZgeqQ9NbLuZlmrSj9JY4lc=";
       };
 
-      buildInputs = [ pkgs.bash ];
+      buildInputs = [ pkgs.bash pkgs.subversion ];
 
       installPhase = ''
         mkdir -p $out/bin
