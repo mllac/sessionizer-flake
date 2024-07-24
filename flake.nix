@@ -20,11 +20,14 @@
       };
 
       buildInputs = [ pkgs.bash pkgs.subversion ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
 
       installPhase = ''
         mkdir -p $out/bin
         cp sessionizer.sh $out/bin/sessionizer.sh
         chmod +x $out/bin/sessionizer.sh
+        wrapProgram $out/bin/sessionizer.sh \
+          --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.bash pkgs.subversion ]}
       '';
 
       meta = {
